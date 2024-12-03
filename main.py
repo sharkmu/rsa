@@ -3,7 +3,7 @@ from random import getrandbits
 import random
 import os
 
-clear = lambda: os.system("cls")
+clear = lambda: os.system("clear") # cmd: cls / bash: clear
 
 def break_fn():
     input()
