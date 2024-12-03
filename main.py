@@ -3,35 +3,63 @@ from random import getrandbits
 import random
 import os
 
-def text_to_numbers(text): # ASCII
-    return [ord(char) for char in text]
-
-def numbers_to_text(numbers):
-    return ''.join([chr(num) for num in numbers])
+clear = lambda: os.system("cls")
 
 def break_fn():
     input()
-    os.system("cls")
+    clear()
 
-bits = random.randint(100, 200) # generate_prime()
-def generate_prime(bits): # titkos
+clear()
+text = str(input("Add meg a titkosítani kívánt szöveget! "))
+
+def text_to_numbers(text):
+    clear()
+    print("A szöveget számokká alakítjuk (ASCII)")
+    break_fn()
+    temp = [ord(char) for char in text]
+    print(temp)
+    break_fn()
+    return temp
+
+txt_ascii = text_to_numbers(text)
+
+def numbers_to_text(numbers):
+    print("A számokat szöveggé alakítjuk")
+    break_fn()
+    return ''.join([chr(num) for num in numbers])
+
+
+bits = random.randint(100, 200)
+def generate_prime(bits):
+    print("Generálunk egy prímszámot (titkos)")
     random_number = getrandbits(bits)
     prime = nextprime(random_number)
+    break_fn()
+    print(prime)
+    break_fn()
     return prime
 
-def n_func(p, q): # nyilvános
+def n_func(p, q):
+    print("Összeszorozzuk a 2 prímszámot egymással (nyilvános)")
+    break_fn()
+    print(p * q)
+    break_fn()
     return p * q
 
 
 p = generate_prime(bits)
 q = generate_prime(bits)
 
-while q is p:
+while q == p:
     q = generate_prime(bits)
 
 n = n_func(p, q)
 
+print("Az 'm' értékének kiszámolásához az Euler-féle phi függvényt kell használni")
+break_fn()
 m = (p - 1) * (q - 1) # Euler
+print(m)
+break_fn()
 
 
 def euklideszi_gcd(a, b): # Euklideszi algoritmus (nagyobb közös osztó)
@@ -72,11 +100,6 @@ def mod_encrypt(x, e, n):
 
 def mod_decrypt(y, d, n):
     return pow(y, d, n)
-
-
-
-text = str(input("Add meg a titkosítani kívánt szöveget! "))
-txt_ascii = text_to_numbers(text)
 
 
 # encrypt
